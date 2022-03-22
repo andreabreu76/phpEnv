@@ -1,0 +1,50 @@
+version: '3.7'
+services:
+
+  app-server:
+    build:
+      context: ./docker/
+      dockerfile: php74Apache.dockerfile
+    image: andreabreu76/php74-apache24
+    container_name: php74-apache24
+    tty: true
+    working_dir: /var/www/html/
+    volumes:
+      - ./src/:/var/www/html/
+    environment:
+      DB_PORT: 3306
+      DB_HOST: database
+      TZ: 'America/Sao_Paulo'
+    ports:
+      - 80:80
+      - 8080:80
+      - 9000:9000
+    networks:
+      - net
+
+  db-server:
+    build:
+      context: ./docker/
+      dockerfile: mysql.dockerfile
+    image: andreabreu76/mysql57
+    container_name: mysql57
+    tty: true
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: teste_andreabreu76
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+      TZ: 'America/Sao_Paulo'
+    ports:
+      - 3306:3306
+    networks:
+      - net
+
+volumes:
+  dbdata:
+    driver: local
+networks:
+  net:
+    driver: "bridge"
