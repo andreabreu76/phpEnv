@@ -63,5 +63,8 @@ Andre Abreu - [andre.abreu(at)gmail.com]
 ### Bases de conhecimento
 
 <https://dev.to/thiagoluna/xdebug-3-no-phpstorm-com-php-7-4-55jm>
+
 <https://vladiiancu.com/post/configure-xdebug-3-and-vscode-with-docker/>
+
 <https://blog.levacic.net/2020/12/19/xdebug-3-docker-vs-code-setup-guide-on-ubuntu/>
+
